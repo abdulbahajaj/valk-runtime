@@ -1,0 +1,5 @@
+{:paths
+ ["src" "static"]
+ :deps
+ {reagent {:mvn/version "0.10.0"}
+  org.clojure/clojurescript {:mvn/version "1.10.773"}}}
