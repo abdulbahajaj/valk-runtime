@@ -1,4 +1,4 @@
-build_client: client/out/
+build_client: client/src/valk/*
 	cd client && clj -m cljs.main -c valk.runtime
 
 build_server: build_client vserver/src/vserver/* vserver/resources/*
