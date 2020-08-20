@@ -1,3 +1,3 @@
-(ns valk.generated)
-
-(defn app [] "valk runtime")
+(ns valk.generated
+  (:require
+   [reagent r]))

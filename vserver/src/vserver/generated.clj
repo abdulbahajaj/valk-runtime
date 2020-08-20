@@ -1,1 +1,2 @@
-(ns vserver.generated)
+(ns vserver.generated
+  (:use vserver.runtime))
