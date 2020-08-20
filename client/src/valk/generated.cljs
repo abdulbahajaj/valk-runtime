@@ -1,3 +1,4 @@
 (ns valk.generated
   (:require
-   [reagent r]))
+   [reagent.core :as r]))
+(defmacro defs [& args] `(defn ~@args))

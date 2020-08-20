@@ -1,2 +1,2 @@
-(ns vserver.generated
-  (:use vserver.runtime))
+(ns vserver.generated)
+(defmacro defs [& args] `(defn ~@args))
