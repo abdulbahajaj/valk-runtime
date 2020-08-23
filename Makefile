@@ -11,7 +11,7 @@ build_server: build_client vserver/src/vserver/*
 	rm -rf ${SERVER_RESOURCES_PATH}
 	mkdir -p ${SERVER_RESOURCES_PATH}/public
 	cp -r ${CLIENT_COMPILATION_PATH} ${SERVER_RESOURCES_PATH}/public/out
-	cp -r ${CLIENT_STATIC_PATH}/ ${SERVER_RESOURCES_PATH}/public
+	cp -r ${CLIENT_STATIC_PATH}/* ${SERVER_RESOURCES_PATH}/public
 	cd vserver && lein uberjar
 
 .PHONY: clean
