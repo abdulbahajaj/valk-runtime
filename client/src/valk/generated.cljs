@@ -1,4 +1,6 @@
 (ns valk.generated
-  (:require
-   [reagent.core :as r]))
-(defmacro defs [& args] `(defn ~@args))
+  (:require-macros [valk.runtime :refer [defs]])
+  (:require [reagent.core :as r]
+            [valk.runtimejs :as rnjs]))
+
+;; Generated code below

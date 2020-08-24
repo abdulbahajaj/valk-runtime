@@ -1,2 +1,4 @@
-(ns vserver.generated)
-(defmacro defs [& args] `(defn ~@args))
+(ns vserver.generated
+  (:require [vserver.runtime :refer [defs]]))
+
+;; Generated code below

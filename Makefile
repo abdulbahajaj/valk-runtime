@@ -5,7 +5,7 @@ CLIENT_COMPILATION_PATH = client/out
 CLIENT_STATIC_PATH = client/static
 
 build_client: client/src/valk/*
-	cd client && clj -m cljs.main -c valk.runtime
+	cd client && clj -m cljs.main -c valk.core
 
 build_server: build_client vserver/src/vserver/* 
 	rm -rf ${SERVER_RESOURCES_PATH}

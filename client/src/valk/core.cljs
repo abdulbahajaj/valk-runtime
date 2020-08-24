@@ -1,4 +1,4 @@
-(ns valk.runtime
+(ns valk.core
   (:require
    [valk.generated :as generated]
    [reagent.core :as r]
