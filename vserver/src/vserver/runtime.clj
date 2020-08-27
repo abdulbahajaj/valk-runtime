@@ -1,4 +1,6 @@
-(ns vserver.runtime)
+(ns vserver.runtime
+  (:require
+   [ring.middleware.json :refer [wrap-json-response]]))
 
 (def server-funcs (atom {}))
 
@@ -18,4 +20,4 @@
 
 (defn call-server-function [req]
   (let [sf (-> req :uri get-server-function)]
-    (if sf (sf req) nil)))
+    (if sf ((-> sf wrap-json-response) req) nil)))
