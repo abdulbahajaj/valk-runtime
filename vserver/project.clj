@@ -4,7 +4,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring/ring "1.6.3"]
-                 [http-kit "2.4.0"]]
+                 [http-kit "2.4.0"]
+                 [clojurewerkz/quartzite "2.1.0"]]
   :repl-options {:init-ns vserver.core}
   :uberjar-name "vserver.jar"
   :profiles {:uberjar {:aot [vserver.core]}}
