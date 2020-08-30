@@ -10,5 +10,5 @@
                  [clojurewerkz/quartzite "2.1.0"]]
   :repl-options {:init-ns vserver.core}
   :uberjar-name "vserver.jar"
-  :profiles {:uberjar {:aot [vserver.core]}}
+  :aot [vserver.core]
   :main vserver.core)

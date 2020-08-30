@@ -19,4 +19,5 @@
 (defn -main [& args]
   (let [port (Integer/parseInt (first args))]
     (run-server app-handler {:port port})
+    (runtime/run-on-start-hooks)
     (println (format "Server started on port %s" port))))
