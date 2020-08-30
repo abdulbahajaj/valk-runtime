@@ -29,7 +29,7 @@
 
 (defmacro startd [name interval & rest]
   (let [random-num (rand-int 1000)]
-    `(do 
+    `(do
       (defjob ~name [ctx] (~@rest))
       (let [schedule# (-> (scheduler/initialize) scheduler/start)
             job# (jobs/build
@@ -41,4 +41,3 @@
             (triggers/with-schedule (schedule
                 (cron-schedule ~interval))))]
         (scheduler/schedule schedule# job# trigger#)))))
-        
