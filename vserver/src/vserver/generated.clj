@@ -1,4 +1,4 @@
 (ns vserver.generated
-  (:require [vserver.runtime :refer [defs]]))
+  (:require [vserver.runtime :refer [defs startd]]))
 
 ;; Generated code below
