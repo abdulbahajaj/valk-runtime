@@ -1,5 +1,6 @@
 (ns vserver.runtime
-  (:require [clojurewerkz.quartzite.scheduler :as scheduler]
+  (:require [ring.middleware.json :refer [wrap-json-response]]
+            [clojurewerkz.quartzite.scheduler :as scheduler]
             [clojurewerkz.quartzite.triggers :as triggers]
             [clojurewerkz.quartzite.jobs :as jobs]
             [clojurewerkz.quartzite.jobs :refer [defjob]]
@@ -8,22 +9,23 @@
 (def server-funcs (atom {}))
 
 (defmacro defs [name args & rest]
-    `(swap! server-funcs
-            assoc
-            (format "/server-functions/%s" ~(str name))
-            (fn [request#]
-              {:status 200
-               :body
-               (let [body# (:body request#)]
-                 (apply (fn [~@args] (do ~@rest))
-                        (map #(% body#) ~(map #(keyword %) args))))})))
+  `(swap! server-funcs
+          assoc
+          (format "/server-functions/%s" ~(str name))
+          (fn [request#]
+            {:status 200
+             :body
+             {:response
+              (let [body# (:body request#)]
+                (apply (fn [~@args] (do ~@rest))
+                       (map #(% body#) ~(map #(keyword %) args)))) }})))
 
 (defn get-server-function [path]
   (get @server-funcs path))
 
 (defn call-server-function [req]
   (let [sf (-> req :uri get-server-function)]
-    (if sf (sf req) nil)))
+    (if sf ((-> sf wrap-json-response) req) nil)))
 
 (defmacro startd [name interval & rest]
   (let [random-num (rand-int 1000)]

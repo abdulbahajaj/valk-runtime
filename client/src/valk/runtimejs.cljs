@@ -7,4 +7,4 @@
 
 (defn send-request [url data callback]
   (go (let [response (<! (http/post url data))]
-        (callback response))))
+        (callback (assoc response :body (:response (:body response) ) )))))
