@@ -4,6 +4,7 @@
         [ring.middleware.not-modified])
   (:require [org.httpkit.server :refer [run-server]]
             [vserver.runtime :as runtime]
+            [ring.util.response :as rres] 
             [vserver.generated :as gen])
   (:gen-class))
 
@@ -14,7 +15,8 @@
       (wrap-not-modified)))
 
 (defn app-handler [req]
-  (or (runtime/call-server-function req) (static-resources req)))
+  (if (= "/" (:uri req)) (rres/redirect "/index.html") 
+      (or (runtime/call-server-function req) (static-resources req))))
 
 (defn -main [& args]
   (let [port (Integer/parseInt (first args))]
